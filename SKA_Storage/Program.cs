@@ -172,7 +172,7 @@ namespace SKA_Storage
                 {
                     GetObjectResponse r = s3Client.GetObject(new GetObjectRequest()
                     {
-                        BucketName = cmap,
+                        BucketName = cmap+"0",
                         Key = clipping + "/" + S3_KEY
                     });
                     try
@@ -226,7 +226,7 @@ namespace SKA_Storage
                 
                     ListObjectsRequest Lor = new ListObjectsRequest()
                     {
-                        BucketName = cmap,
+                        BucketName = cmap+"0",
                         Prefix= clipping
 
                         //with Delimiter is '/', it will not get folder. {we need just count files in a bucket which are not forlsers!
@@ -246,8 +246,10 @@ namespace SKA_Storage
                 //Show Exception
             }
 
-
-            return count.ToString();
+            if (count == 0)
+                return count.ToString();
+            else
+            return (count-1).ToString();
 
         }
 
