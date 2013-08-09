@@ -1,0 +1,46 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SKA_Storage", "SKA_Storage\SKA_Storage.csproj", "{A4DB3A6A-7959-4517-844B-4D00AE09436C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7EDA4D8D-EE8B-4D2B-B913-7E8F3B8C96D3}"
+	ProjectSection(SolutionItems) = preProject
+		IntAirActCS\IntAirAct.vsmdi = IntAirActCS\IntAirAct.vsmdi
+		IntAirActCS\Local.testsettings = IntAirActCS\Local.testsettings
+		IntAirActCS\TraceAndTestImpact.testsettings = IntAirActCS\TraceAndTestImpact.testsettings
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{48986CFE-BFF1-4B6A-AA42-2E2717BEB43F}"
+	ProjectSection(SolutionItems) = preProject
+		IntAirActCS\.nuget\NuGet.Config = IntAirActCS\.nuget\NuGet.Config
+		IntAirActCS\.nuget\NuGet.exe = IntAirActCS\.nuget\NuGet.exe
+		IntAirActCS\.nuget\NuGet.targets = IntAirActCS\.nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A4DB3A6A-7959-4517-844B-4D00AE09436C}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{A4DB3A6A-7959-4517-844B-4D00AE09436C}.Debug|Any CPU.Build.0 = Debug|x86
+		{A4DB3A6A-7959-4517-844B-4D00AE09436C}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{A4DB3A6A-7959-4517-844B-4D00AE09436C}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{A4DB3A6A-7959-4517-844B-4D00AE09436C}.Debug|x86.ActiveCfg = Debug|x86
+		{A4DB3A6A-7959-4517-844B-4D00AE09436C}.Debug|x86.Build.0 = Debug|x86
+		{A4DB3A6A-7959-4517-844B-4D00AE09436C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A4DB3A6A-7959-4517-844B-4D00AE09436C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A4DB3A6A-7959-4517-844B-4D00AE09436C}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{A4DB3A6A-7959-4517-844B-4D00AE09436C}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{A4DB3A6A-7959-4517-844B-4D00AE09436C}.Release|x86.ActiveCfg = Release|x86
+		{A4DB3A6A-7959-4517-844B-4D00AE09436C}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

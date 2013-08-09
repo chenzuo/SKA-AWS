@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
+    <projectUrl>https://github.com/ase-lab/IntAirActCS</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <copyright>Copyright © 2012 Arlo O'Keeffe, ASE Group of Frank Maurer (University of Calgary)</copyright>
+    <tags>Bonjour Service Discovery</tags>
+    <dependencies>
+      <dependency id="ZeroconfService" version="0.6" />
+    </dependencies>
+  </metadata>
+</package>

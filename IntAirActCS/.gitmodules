@@ -1,0 +1,6 @@
+[submodule "Frameworks/ZeroConfigNetServices"]
+	path = Frameworks/ZeroConfigNetServices
+	url = https://github.com/ase-lab/ZeroConfigNetServices.git
+[submodule "csharp-monads"]
+	path = csharp-monads
+	url = https://bitbucket.org/kpratt/csharp-monads.git

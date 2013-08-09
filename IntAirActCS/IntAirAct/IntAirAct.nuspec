@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>http://opensource.org/licenses/MIT</licenseUrl>
+    <projectUrl>http://arlol.github.com/intairact.html</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Initial release of IntAirAct.</releaseNotes>
+    <copyright>Copyright 2012 Arlo Louis O'Keeffe, ASE Group of Frank Maurer (University of Calgary)</copyright>
+    <tags>IntAirAct REST Device Interaction</tags>
+    <dependencies>
+      <dependency id="Owin" version="[0.7]" />
+      <dependency id="Nancy" version="[0.11.0]" />
+      <dependency id="Firefly" version="[0.4]" />
+      <dependency id="Gate" version="[0.3.6]" />
+      <dependency id="Gate.Adapters.Nancy" version="[0.3.6]" />
+      <dependency id="Gate.Hosts.Firefly" version="[0.3.6]" />
+      <dependency id="Newtonsoft.Json" version="4.5.11" />
+      <dependency id="RestSharp" version="104.1" />
+      <dependency id="ServiceDiscovery" version="1.0" />
+    </dependencies>
+  </metadata>
+</package>
