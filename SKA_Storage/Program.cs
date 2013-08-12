@@ -217,11 +217,7 @@ namespace SKA_Storage
         /// <returns></returns>
 
         public static string SliceNumbers(AmazonS3 s3Client, string cmap, string clipping)
-        {
-
-            int count = -1;
-
-            
+        {           
                 //ListBucketsRequest buckr = new ListBucketsRequest();
                 //ListBucketsResponse response = s3Client.ListBuckets(buckr);
                 
@@ -238,24 +234,15 @@ namespace SKA_Storage
 
               
                     ListObjectsResponse response1 = s3Client.ListObjects(Lor);
-                    foreach (S3Object s3Object in response1.S3Objects)
-                    {
-                        count++;
-                    }
 
-                    if (count == (-1))
+                    if (response1.S3Objects.Count - 1 < 0)
                     {
-                        imgfound = false;
-                        Console.WriteLine("Hey");
-                        return null;
+                        return "0";
                     }
                     else
-                        return count.ToString();
-                    
-            
-               
-            
-
+                    {
+                        return (response1.S3Objects.Count - 1).ToString();
+                    }
         }
 
         public static String MakeUrl(AmazonS3 s3Client)
@@ -332,19 +319,12 @@ namespace SKA_Storage
                         string cmap = request.Parameters["cmap"];
                         string clipping = request.Parameters["clipping"];
                         Program.SliceNumbers(s3Client, cmap, clipping);
-                        if (Program.imgfound == false)
-                        {
-                            response.StatusCode = 404;
-                            Console.WriteLine("Response Status Code is: "+ response.StatusCode.ToString());
-                            Program.imgfound = true;
-                        }
-                        else
-                            response.SetBodyWithString(Program.SliceNumbers(s3Client, cmap, clipping));
+                        response.SetBodyWithString(Program.SliceNumbers(s3Client, cmap, clipping));
                         
                     }
                     catch
                     {
-                        response.StatusCode = 404;
+                        response.SetBodyWithString("0");
                     }
                 });
 
