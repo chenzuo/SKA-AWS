@@ -32,6 +32,7 @@ namespace SKA_Storage
        public static string BUCKET_NAME = "Images1985";
         public static string S3_KEY;
         public const string File_Path = @"C:\Users\Mohammad\Documents\Visual Studio 2012\Projects\SKA_Storage\hii.pdf";
+        public static bool imgfound = true;
 
 
         public static AmazonS3 GetS3Client()
@@ -194,11 +195,13 @@ namespace SKA_Storage
                     {
                     }
                     Console.WriteLine();
+                    
                     return file.ToArray();
 
                 }
                 catch (AmazonS3Exception)
                 {
+                    imgfound = false;
                     Console.WriteLine("Oops!");
                 }
             }
@@ -216,40 +219,42 @@ namespace SKA_Storage
         public static string SliceNumbers(AmazonS3 s3Client, string cmap, string clipping)
         {
 
-            int count = 0;
+            int count = -1;
 
-            try
-            {
+            
                 //ListBucketsRequest buckr = new ListBucketsRequest();
                 //ListBucketsResponse response = s3Client.ListBuckets(buckr);
-
                 
+
                     ListObjectsRequest Lor = new ListObjectsRequest()
                     {
-                        BucketName = cmap+"0",
-                        Prefix= clipping
+                        BucketName = cmap + "0",
+                        Prefix = clipping
 
                         //with Delimiter is '/', it will not get folder. {we need just count files in a bucket which are not forlsers!
                         //Delimiter= "/"
                     };
+                
+
+              
                     ListObjectsResponse response1 = s3Client.ListObjects(Lor);
                     foreach (S3Object s3Object in response1.S3Objects)
                     {
                         count++;
                     }
+
+                    if (count == (-1))
+                    {
+                        imgfound = false;
+                        Console.WriteLine("Hey");
+                        return null;
+                    }
+                    else
+                        return count.ToString();
+                    
+            
                
-            }
-
-
-            catch (AmazonS3Exception ex)
-            {
-                //Show Exception
-            }
-
-            if (count == 0)
-                return count.ToString();
-            else
-            return (count-1).ToString();
+            
 
         }
 
@@ -277,7 +282,7 @@ namespace SKA_Storage
             AmazonS3 s3Client = Program.GetS3Client();
             S3_KEY = sliceNumber + ".jpg";
             var a = GetFile(s3Client, cmap, clipping);
-
+            if (a == null) Console.WriteLine("a in null");
             return a;
         }
 
@@ -326,7 +331,16 @@ namespace SKA_Storage
                     {
                         string cmap = request.Parameters["cmap"];
                         string clipping = request.Parameters["clipping"];
-                        response.SetBodyWithString(Program.SliceNumbers(s3Client, cmap, clipping));
+                        Program.SliceNumbers(s3Client, cmap, clipping);
+                        if (Program.imgfound == false)
+                        {
+                            response.StatusCode = 404;
+                            Console.WriteLine("Response Status Code is: "+ response.StatusCode.ToString());
+                            Program.imgfound = true;
+                        }
+                        else
+                            response.SetBodyWithString(Program.SliceNumbers(s3Client, cmap, clipping));
+                        
                     }
                     catch
                     {
@@ -344,8 +358,18 @@ namespace SKA_Storage
 
                         byte[] data = Program.GetImage(sliceNumber,cmap, clipping);
 
-                        response.Body = data;
-                        response.ContentType = "image/jpeg";
+                        if (Program.imgfound==false)
+                        {
+                            response.StatusCode = 404;
+                            Program.imgfound = true;
+                                                    }
+                        else
+                        {
+                            response.Body = data;
+                            response.ContentType = "image/jpeg";
+                        }
+                        
+                                                  
                     }
                     catch
                     {
