@@ -298,6 +298,19 @@ namespace SKA_Storage
     }
         class WebServer
         {
+            private static string GetExternalIP()
+            {
+                WebClient webClient = new WebClient();
+                try
+                {
+                    return webClient.DownloadString("http://icanhazip.com/");
+                }
+                catch
+                {
+                    return "Unknown";
+                }
+            }
+
             static void Main(string[] args)
             {
                 Program p = new Program();
@@ -357,16 +370,13 @@ namespace SKA_Storage
                     }
                 });
 
-
+                intAirAct.Port = 12350;
                 intAirAct.Start();
-                //WebServer ws = new WebServer(SendResponse, "http://localhost:8080/");
-                //ws.Run();
+
                 Console.WriteLine("");
-                Console.WriteLine("A simple webserver. Press a key to quit.");
+                Console.WriteLine(WebServer.GetExternalIP() + "Port " + intAirAct.Port.ToString());
+                Console.WriteLine("\nA simple webserver. Press any key to quit.");
                 Console.ReadKey();
-
-                //ws.Stop();
-
             }
         }
 
